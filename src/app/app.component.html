@@ -4,5 +4,22 @@
     <input type="search" #data id="music" placeholder="Nombre del Artista...">
     <button class="btn btn-danger" type="button" (click)="getArtistForName(data)">Buscar</button>
   </form>
+
+  
+
+  <div *ngFor="let item of musicas.data">
+    <h1>{{item.title}}</h1>
+    Albumes
+
+    <h2>{{item.album.title}}</h2>
+
+    <img src="{{item.album.cover}}" width="150px" height="150px" alt="">
+    <button class="btn btn-danger" type="button" (click)="getTrackListForArtist(item.album.id)">Mostrar track list</button>
+  </div>
+
+  <div *ngFor="let item2 of track_list.tracks.data">
+    <audio src="{{item2.preview}}" controls></audio>
+  </div>
+
 </main>
 
