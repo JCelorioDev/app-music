@@ -1,25 +1,45 @@
 <main>
   <form action="">
-    <label for="music">Nombre</label>
     <input type="search" #data id="music" placeholder="Nombre del Artista...">
     <button class="btn btn-danger" type="button" (click)="getArtistForName(data)">Buscar</button>
   </form>
+      
 
-  
-
-  <div *ngFor="let item of musicas.data">
+  <div *ngFor="let item of musicas.data; let i = index">
+    <div id="artist" *ngIf="i==0">
+      {{item.artist.name}}
+    </div>
     <h1>{{item.title}}</h1>
     Albumes
 
     <h2>{{item.album.title}}</h2>
 
     <img src="{{item.album.cover}}" width="150px" height="150px" alt="">
-    <button class="btn btn-danger" type="button" (click)="getTrackListForArtist(item.album.id)">Mostrar track list</button>
+    <button class="btn btn-danger" type="button" (click)="getTrackListForArtist(item.album.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">Mostrar track list</button>
   </div>
 
-  <div *ngFor="let item2 of track_list.tracks.data">
-    <audio src="{{item2.preview}}" controls></audio>
-  </div>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Lista de Track List</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div *ngFor="let item2 of track_list.tracks.data">
+                <audio src="{{item2.preview}}" controls></audio>
+              </div>
+              <span class="badge rounded-pill text-bg-primary" *ngFor="let item of track_list.genres.data">{{item.name}}</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
 </main>
 
