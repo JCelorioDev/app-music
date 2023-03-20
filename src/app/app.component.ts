@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'practica_5';
+
+  public musicas:any;
+
+  getArtistForName(data:any){
+    
+  }
 }
