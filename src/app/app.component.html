@@ -1,21 +1,20 @@
 <main>
-  <form action="">
+  <form id="buscador" action="">
     <input type="search" #data id="music" placeholder="Nombre del Artista...">
     <button class="btn btn-danger" type="button" (click)="getArtistForName(data)">Buscar</button>
   </form>
       
 
-  <div *ngFor="let item of musicas.data; let i = index">
+  <div *ngFor="let item of musicas.data; let i = index" class="container-music">
     <div id="artist" *ngIf="i==0">
-      {{item.artist.name}}
+      <h3>Nombre del Artista: {{item.artist.name}}</h3>
+      <img id="artist_image" src="{{item.artist.picture_big}}" alt="{{item.artist.name}}">
     </div>
-    <h1>{{item.title}}</h1>
-    Albumes
+    <h1>Canción: {{item.title}}</h1>
+    <h2>Albúm: {{item.album.title}}</h2>
 
-    <h2>{{item.album.title}}</h2>
-
-    <img src="{{item.album.cover}}" width="150px" height="150px" alt="">
-    <button class="btn btn-danger" type="button" (click)="getTrackListForArtist(item.album.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">Mostrar track list</button>
+    <img class="container-music_image" src="{{item.album.cover_big}}" width="150px" height="150px" alt="{{item.album.title}}"> <br><br><br>
+    <button class="btn btn-primary" type="button" (click)="getTrackListForArtist(item.album.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">Mostrar track list</button>
   </div>
 
       <!-- Modal -->
@@ -23,14 +22,14 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Lista de Track List</h1>
+              <h2 class="modal-title fs-5" id="exampleModalLabel">Lista de Track's</h2>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <div *ngFor="let item2 of track_list.tracks.data">
+              <div class="modal-body_music" *ngFor="let item2 of track_list.tracks.data">
                 <audio src="{{item2.preview}}" controls></audio>
               </div>
-              <span class="badge rounded-pill text-bg-primary" *ngFor="let item of track_list.genres.data">{{item.name}}</span>
+              <span class="badge rounded-pill text-bg-primary" *ngFor="let item of track_list.genres.data">Generos: {{item.name}}</span>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

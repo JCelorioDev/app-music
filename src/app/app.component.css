@@ -1,0 +1,58 @@
+#buscador{
+    position: relative;
+    left: 35rem;
+}
+
+#artist{
+    position: relative;
+    left: 30rem;
+}
+
+#artist_image{
+    position: relative;
+    left: 6rem;
+    width: 250px;
+    height: 250px;
+}
+
+.btn{
+    width: 150px;
+}
+
+.btn-danger{
+    margin: 0 10px;
+}
+
+.btn-primary{
+    position: relative;
+    left: 39rem;
+    margin: 15px 0;
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+.container-music_image{
+    position: relative;
+    left: 37rem;
+    width: 200px;
+    height: 200px;
+}
+.modal-header h2{
+    text-align: center;
+}
+
+.modal-body_music{
+    position: relative;
+    left: 5rem;
+}
+
+.badge{
+    position: relative;
+    left: 10rem;
+}
